@@ -1,0 +1,17 @@
+{
+  "name": "hotosm-40992-site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/generate-daily-manifest.mjs && vite build --config vite.config.js"
+  },
+  "dependencies": {
+    "maplibre-gl": "^4.7.1",
+    "maplibre-gl-layer-control": "^0.12.0",
+    "pmtiles": "^3.0.6"
+  },
+  "devDependencies": {
+    "vite": "^5.4.3",
+    "vite-plugin-singlefile": "^2.0.1"
+  }
+}

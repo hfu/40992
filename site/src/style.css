@@ -1,0 +1,52 @@
+:root {
+  color-scheme: light;
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #0b0f14;
+  color: #e5e7eb;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.header {
+  padding: 14px 20px;
+  background: linear-gradient(90deg, #0f172a, #111827);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.subtitle {
+  margin-top: 4px;
+  font-size: 13px;
+  color: #cbd5f5;
+}
+
+.main {
+  flex: 1;
+  min-height: 0;
+}
+
+#map {
+  width: 100%;
+  height: calc(100vh - 58px);
+}
+
+.maplibregl-ctrl-top-right {
+  margin-top: 64px;
+}
