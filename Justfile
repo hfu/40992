@@ -24,3 +24,4 @@ today:
     ogr2ogr -f GeoJSONSeq /vsistdout/ "$DATE/{{SHP_FILE}}" | \
       tippecanoe -o "docs/daily/$DATE.pmtiles" -f -zg --read-parallel --layer=buildings
   rm -rf tmp
+  just build
