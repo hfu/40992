@@ -7,7 +7,15 @@ import { Protocol } from "pmtiles";
 import { LayerControl } from "maplibre-gl-layer-control";
 import dailyManifest from "./daily-manifest.json";
 
-const TILEJSON_URL = "https://tunnel.optgeo.org/martin/freetown_2025-10-22_nearest";
+// OpenAerialMap (HOT) TiTiler-PgSTAC. STAC item: "Freetown Urban with Sensitive Areas
+// Blurred" (DroneTM, 2025-10-22, GSD 3.9 cm, CC-BY-4.0).
+const OAM_ITEM_ID = "69075f1de47603686de24fe8";
+const TILEJSON_URL =
+  `https://api.imagery.hotosm.org/raster/collections/openaerialmap/items/${OAM_ITEM_ID}` +
+  "/WebMercatorQuad/tilejson.json?assets=visual&resampling=nearest";
+const OAM_ATTRIBUTION =
+  '<a href="https://openaerialmap.org/" target="_blank" rel="noopener">OpenAerialMap</a> ' +
+  "(CC-BY 4.0, DroneTM / HOT, 2025-10-22)";
 
 const protocol = new Protocol();
 maplibregl.addProtocol("pmtiles", protocol.tile);
@@ -21,7 +29,10 @@ const buildStyle = (tilejson) => {
         type: "raster",
         tiles: tilejson.tiles,
         tileSize,
-        attribution: tilejson.attribution || ""
+        minzoom: tilejson.minzoom,
+        maxzoom: tilejson.maxzoom,
+        bounds: tilejson.bounds,
+        attribution: tilejson.attribution || OAM_ATTRIBUTION
       }
     },
     layers: [
